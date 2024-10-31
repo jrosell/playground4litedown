@@ -1,7 +1,23 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
 # playground4litedown
 
-```{r}
+This repo exists because of [this toot in mastodon](https://mastodon.social/@defuneste@fosstodon.org/113398806612007032) asking for help building a small [{litedown}](https://github.com/yihui/litedown) site.
+
+## Installation
+
+```{r echo=TRUE, eval=FALSE, include=TRUE}
 pak::pak(c("yihui/litedown", "yihui/servr"))
+```
+
+## Example
+
+Render the site and serve it whatching changes for rerendering.
+
+```{r echo=TRUE, eval=FALSE, include=TRUE}
 litedown::fuse_site("www")
 servr::httw("www", ".", handler = \(x) {
     cat(paste(x), " changed", '\n')
