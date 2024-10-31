@@ -1,19 +1,22 @@
-# playground4litedown
+playground4litedown
+===================
 
 This repo exists because of [this toot in
 mastodon](https://mastodon.social/@defuneste@fosstodon.org/113398806612007032)
-asking for help building a small
+requesting help to build a small
 [{litedown}](https://github.com/yihui/litedown) site.
 
-## Installation
+Installation
+------------
 
 ``` r
 pak::pak(c("yihui/litedown", "yihui/servr"))
 ```
 
-## Example
+Example
+-------
 
-Render the site and serve it whatching changes for rerendering.
+Render the site and serve it, watching for changes to re-render.
 
 ``` r
 litedown::fuse_site("www")
