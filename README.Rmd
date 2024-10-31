@@ -1,0 +1,10 @@
+# playground4litedown
+
+```{r}
+pak::pak(c("yihui/litedown", "yihui/servr"))
+litedown::fuse_site("www")
+servr::httw("www", ".", handler = \(x) {
+    cat(paste(x), " changed", '\n')
+    litedown::fuse_site(".")
+})
+```
