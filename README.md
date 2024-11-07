@@ -18,7 +18,7 @@ Example
 
 I list multiple options here:
 
-1.  Render the site from one place, and serve it from another place.
+-   Render the site from one place, and serve it from another place.
 
 ``` r
 litedown::fuse_site("www1")
@@ -38,7 +38,7 @@ servr::httw("www1", ".", handler = \(x) {
 })
 ```
 
-1.  Render the site and serve it from the same place, watching for
+-   Render the site and serve it from the same place, watching for
     changes to re-render.
 
 ``` r
@@ -49,7 +49,7 @@ servr::httw("www2", ".", handler = \(x) {
 })
 ```
 
-1.  Launch a web page to list and preview R Markdown and HTML files
+-   Launch a web page to list and preview R Markdown and HTML files
     under the same directory.
 
 ``` r
