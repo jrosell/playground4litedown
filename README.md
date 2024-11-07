@@ -24,7 +24,8 @@ I list multiple options here:
 litedown::fuse_site("www1")
 from_files <- c(
   fs::dir_ls("www1/src", glob = "*.html"),
-  fs::dir_ls("www1/src", glob = "*_files")
+  fs::dir_ls("www1/src", glob = "*_files"),
+  fs::dir_ls("www1/src", glob = "*_cache")
 )
 fs::file_move(from_files, "www1")
 servr::httw("www1", ".", handler = \(x) {
@@ -32,7 +33,8 @@ servr::httw("www1", ".", handler = \(x) {
     litedown::fuse_site(".")
     from_files <- c(
       fs::dir_ls("src", glob = "*.html"),
-      fs::dir_ls("src", glob = "*_files")
+      fs::dir_ls("src", glob = "*_files"),
+      fs::dir_ls("src", glob = "*_cache"),
     )
     fs::file_move(from_files, ".")
 })
