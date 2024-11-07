@@ -15,12 +15,42 @@ pak::pak(c("yihui/litedown", "yihui/servr"))
 
 ## Example
 
-Render the site and serve it, watching for changes to re-render.
+I list multiple options here:
+
+1. Render the site from one place, and serve it from another place.
 
 ```{r echo=TRUE, eval=FALSE, include=TRUE}
-litedown::fuse_site("www")
-servr::httw("www", ".", handler = \(x) {
+litedown::fuse_site("www1")
+from_files <- c(
+  fs::dir_ls("www1/src", glob = "*.html"),
+  fs::dir_ls("www1/src", glob = "*_files")
+)
+fs::file_move(from_files, "www1")
+servr::httw("www1", ".", handler = \(x) {
+    cat(paste(x), " changed", '\n')
+    litedown::fuse_site(".")
+    from_files <- c(
+      fs::dir_ls("src", glob = "*.html"),
+      fs::dir_ls("src", glob = "*_files")
+    )
+    fs::file_move(from_files, ".")
+})
+```
+
+
+2. Render the site and serve it from the same place, watching for changes to re-render.
+
+```{r echo=TRUE, eval=FALSE, include=TRUE}
+litedown::fuse_site("www2")
+servr::httw("www2", ".", handler = \(x) {
     cat(paste(x), " changed", '\n')
     litedown::fuse_site(".")
 })
+```
+
+3. Launch a web page to list and preview R Markdown and HTML files under the same directory.
+
+```{r}
+litedown::fuse_site("www3")
+litedown::roam("www3") 
 ```

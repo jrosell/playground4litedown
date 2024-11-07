@@ -19,8 +19,8 @@ Example
 Render the site and serve it, watching for changes to re-render.
 
 ``` r
-litedown::fuse_site("www")
-servr::httw("www", ".", handler = \(x) {
+litedown::fuse_site("www1")
+servr::httw("www1", ".", handler = \(x) {
     cat(paste(x), " changed", '\n')
     litedown::fuse_site(".")
 })

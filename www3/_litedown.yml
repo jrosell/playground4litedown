@@ -1,0 +1,10 @@
+site:
+  rebuild: "outdated"
+  pattern: "[.]Rmd$"
+
+output:
+  litedown::html_format:
+    meta:
+      css: ["@default"]
+      include_before: "[Home](/) [About](/about.html)"
+      include_after: "&copy; 2024"
